@@ -10,9 +10,10 @@ categories: git
 
 接着加上这个参数之后，结果在 rebase 到了这个 merge commit 的时候仍然出错了
 
-`error: Commit 5f43262298b846a219baa6fd7ec2a39363557112 is a merge but no -m option was given.
+```
+error: Commit 5f43262298b846a219baa6fd7ec2a39363557112 is a merge but no -m option was given.
 fatal: cherry-pick failed
-`
+```
 
 这次是因为 merge commit 存在两个 parent。rebase 操作进行的时候是依次重演每个 commit（依次添加 diff 的内容），而到了 merge commit 时，它有两个 parent，那么就有两个 diff，rebase 就不知道该选择哪个 diff 来进行重演了。
 
